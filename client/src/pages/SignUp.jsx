@@ -18,10 +18,12 @@ export default function SignUp() {
         body: JSON.stringify(formData),
       });
       await response.json().then((d) => {
-        setloading(false);
         if (!d.success) {
           setError(true);
+          setloading(false);
         }
+        setloading(false);
+        setError(false);
       });
     } catch (error) {
       setloading(false);
@@ -71,7 +73,7 @@ export default function SignUp() {
           <span className="text-blue-500">Sign In</span>
         </Link>
       </div>
-      <p className="text-red-700">{error && "Something went wrong"}</p>
+      <p className="text-red-700">{error && "Something went wrong!"}</p>
     </div>
   );
 }
