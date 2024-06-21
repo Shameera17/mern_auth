@@ -18,12 +18,11 @@ export default function SignUp() {
         body: JSON.stringify(formData),
       });
       await response.json().then((d) => {
+        setloading(false);
         if (!d.success) {
           setError(true);
-          setloading(false);
         }
-        setloading(false);
-        setError(false);
+        navigate("/");
       });
     } catch (error) {
       setloading(false);
