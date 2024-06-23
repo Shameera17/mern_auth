@@ -21,7 +21,10 @@ export const signin = async (req, res, next) => {
     const validUser = await User.findOne({ email });
     if (!validUser) return next(errorHandler(404, "User not found"));
 
-    const isMatch = bcrypt.compare(password, validUser.password);
+    const isMatch = await bcrypt.compare(
+      await password,
+      await validUser.password
+    );
     if (!isMatch) return next(errorHandler(401, "Invalid credentials"));
 
     const expiryTime = new Date(Date.now() + 3600000); // 1 hour from now
