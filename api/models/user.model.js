@@ -16,6 +16,10 @@ const userSchema = new Schema(
       type: String,
       require: true,
     },
+    profilePicture: {
+      type: String,
+      default: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    },
   },
   { timestamps: true }
 );
